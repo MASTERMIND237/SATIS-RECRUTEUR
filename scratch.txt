@@ -1,0 +1,380 @@
+📋 CAHIER DES CHARGES - Application "Satis-Tuteur"
+Version : 1.2Date : 2 Juillet 2026Auteur : Essongue MarcienStatut : En attente de validation
+1. PRÉSENTATION DU PROJET
+1.1 Contexte
+"Satis-Tuteur" est une application de recrutement créée par Essongue Marcien. L'objectif est d'évaluer la façon de penser business et communication des candidats via des questions ouvertes, dans une expérience immersive et fluide.
+Enjeux stratégiques :
+Créer une expérience mémorable qui reflète la culture de "Satis-Tuteur".
+Plonger le candidat dans le contexte de l'entreprise avant qu'il ne réponde.
+Recueillir des réponses spontanées et authentiques (effet "question qui apparaît et disparaît").
+Renforcer la marque employeur via une interface épurée et un parcours guidé.
+Domaine : Recrutement / Évaluation comportementale
+1.2 Objectifs
+Objectif principal :Fournir un outil permettant à un candidat de :
+Être mis en contexte (2 écrans introductifs).
+Répondre à une série de questions ouvertes en mode "in-and-out".
+Recevoir un message de remerciement personnalisé.
+Envoyer automatiquement ses réponses par email au recruteur via Formspree.
+Objectifs secondaires :
+Créer une expérience utilisateur fluide (in-and-out) qui met à l'aise le candidat.
+Renforcer l'identité de marque "Satis-Tuteur" tout au long du parcours.
+Permettre une modification facile des questions et des textes introductifs.
+Assurer une sécurité maximale sans exposer de clés API ou d'identifiants.
+Indicateurs de succès :
+Taux de complétion > 90%.
+Temps de passation moyen < 10 minutes.
+Qualité des réponses (évaluée manuellement).
+Taux de délivrabilité des emails > 99%.
+1.3 Description de l'existant
+Environnement actuel :
+Aucun outil dédié n'existe aujourd'hui.
+Les évaluations se font via des entretiens oraux ou des questionnaires Google Forms standard.
+Aucune expérience "in-and-out" ni mise en contexte immersive.
+Environnement cible :
+Plateforme : Navigateur web moderne (Chrome, Firefox, Safari, Edge).
+Hébergement : Static hosting (Netlify, Vercel, GitHub Pages, ou Cloudflare Pages).
+Stockage : Aucune base de données. Les réponses sont envoyées par email uniquement.
+Envoi d'emails : Formspree (service de formulaire sécurisé sans backend).
+1.4 Critères d'acceptabilité du produit
+Procédure de validation :
+Le recruteur ouvre l'application.
+Il simule une session candidat (parcours complet).
+Il vérifie que l'email reçu contient toutes les réponses dans l'ordre.
+Il vérifie que les animations in-and-out sont fluides.
+Il vérifie que les données sont bien formatées dans l'email.
+Critères d'acceptation :
+✅ L'application s'ouvre en < 2 secondes.
+✅ Les 2 écrans introductifs s'affichent en in-and-out.
+✅ Chaque question apparaît avec animation (fade-in) et disparaît (fade-out).
+✅ Les réponses sont envoyées par email en < 5 secondes après soumission finale.
+✅ Le message de remerciement affiche le nom du candidat et un emoji.
+✅ L'interface est responsive (mobile-first).
+✅ La marque "Satis-Tuteur" est visible sur tous les écrans.
+✅ Aucune clé API ou identifiant n'est exposé dans le code frontend.
+✅ Les données sont envoyées via HTTPS vers Formspree.
+2. EXPRESSION DES BESOINS
+2.1 Besoins fonctionnels
+ID
+Fonction
+Priorité
+Description
+F1
+Collecte d'identité
+⭐⭐⭐
+Demander le nom et email du candidat avant les questions.
+F2
+Écrans introductifs
+⭐⭐⭐
+Afficher 2 écrans de mise en contexte (in-and-out) avant les questions.
+F3
+Affichage in-and-out
+⭐⭐⭐
+Afficher une question à la fois, avec animation d'entrée et de sortie.
+F4
+Validation des réponses
+⭐⭐⭐
+Champ texte + bouton "Suivant" pour valider chaque réponse.
+F5
+Progression
+⭐⭐⭐
+Indiquer l'avancement ("Question 3/6", "Écran 2/2").
+F6
+Message de remerciement
+⭐⭐⭐
+Afficher un message personnalisé avec le nom du candidat et un emoji.
+F7
+Envoi par email
+⭐⭐⭐
+Envoyer toutes les réponses + infos candidat au recruteur via Formspree.
+F8
+Image de marque
+⭐⭐
+Afficher le nom "Satis-Tuteur" et l'identité visuelle sur tous les écrans.
+2.3 Détail des questions (F3)
+Toutes les questions sont ouvertes (texte libre).
+N°
+Question
+Objectif recherché
+1
+"Qu'est-ce qui fait qu'un produit est 'indispensable' pour un utilisateur ?"
+Vision produit / empathie utilisateur
+2
+"Si vous aviez 10 000€ pour acquérir 100 nouveaux clients, quelle serait votre stratégie ?"
+Sens business / créativité
+3
+"Un concurrent lance une fonctionnalité similaire à la nôtre. Quelle est votre première réaction ?"
+Réaction face à la concurrence
+4
+"Comment mesurez-vous le succès d'un produit en phase de lancement ?"
+Culture de la donnée / KPIs
+5
+"Un client insatisfait menace de partir. Que lui dites-vous ?"
+Gestion client / fidélisation
+6
+"Décrivez en quelques phrases votre vision du 'travail bien fait' dans une équipe produit."
+Valeurs / management
+Note : Les questions sont modifiables facilement via un fichier JSON (voir Annexe B).
+2.4 Besoins non fonctionnels
+Catégorie
+Spécification
+Performance
+Temps de chargement < 2s. Animations fluides (60fps).
+Compatibilité
+Chrome 90+, Firefox 88+, Safari 14+, Edge 90+.
+Sécurité
+Aucun stockage de données personnelles. HTTPS obligatoire. Aucune clé API exposée.
+Expérience utilisateur
+Design minimaliste, couleurs apaisantes (ex: bleu/rouge/jaune le tout en pastel).
+Maintenabilité
+Code modulaire. Textes modifiables via JSON.
+Accessibilité
+Contrastes suffisants. Navigation au clavier.
+Email
+Tous les emails sont envoyés via Formspree avec validation serveur.
+3. CONTRAINTES
+3.1 Coûts
+Poste
+Coût estimé
+Hébergement
+0€ (Netlify/Vercel/Cloudflare Pages)
+Service d'email
+0€ (Formspree : 50 soumissions/mois gratuites)
+Développement
+3 heures
+Total
+0€
+Moyens mis à disposition :
+Compte Formspree gratuit.
+Aucune licence payante.
+Aucun serveur dédié.
+3.2 Délais
+Étape
+Date butoir
+Livraison du MVP
+J+1 (3h de dev)
+Tests utilisateurs
+J+2
+Mise en production
+J+3
+3.3 Autres contraintes
+Identité de marque : Le nom "Satis-Tuteur" apparaît sur tous les écrans.
+Clauses juridiques : Mention légale avant la première question.
+Formspree : L'ID du formulaire Formspree est stocké dans le fichier de configuration.
+Pas de scoring : Aucun calcul, seulement les réponses brutes.
+Sécurité : Aucune donnée sensible n'est stockée localement. Les données sont envoyées directement à Formspree via HTTPS.
+4. DÉROULEMENT DU PROJET
+4.1 Planification
+Phase
+Durée
+Livrable
+Phase 1 : Conception
+30 min
+Questions + Textes introductifs finalisés
+Phase 2 : Développement HTML/CSS
+1h
+Structure + Styles + Animations
+Phase 3 : Développement JS
+1h
+Logique d'affichage + Gestion des réponses
+Phase 4 : Intégration Formspree
+15 min
+Configuration du formulaire + Tests d'envoi
+Phase 5 : Tests & Déploiement
+15 min
+Déploiement sur Netlify + Test final
+Jalons :
+Jalon 1 (1h) : Formulaire d'identité + 1er écran introductif.
+Jalon 2 (1h30) : Tous les écrans (intro + questions) enchaînés.
+Jalon 3 (2h30) : Email envoyé via Formspree.
+Jalon 4 (3h) : Déploiement en production.
+4.2 Plan d'assurance qualité
+Activité
+Fréquence
+Responsable
+Tests sur 3 navigateurs
+Une fois
+Développeur
+Vérification des emails
+Après chaque test
+Recruteur
+Test animations
+Une fois
+Développeur
+Vérification des données Formspree
+Une fois
+Développeur
+Critères de qualité :
+Taux d'erreur JS = 0%.
+Les animations in-and-out sont fluides.
+L'email contient toutes les réponses avec les questions associées.
+Les données sont bien formatées dans l'email reçu.
+4.3 Documentation
+Documentation livrée :
+README.md :
+Description du projet.
+Instructions pour modifier les questions et textes introductifs.
+Instructions pour configurer Formspree (changer l'ID du formulaire).
+Lien vers la démo.
+Commentaires dans le code (JSDoc).
+Guide utilisateur (1 page) :
+"Comment utiliser l'outil en 3 étapes" (pour le recruteur).
+4.4 Responsabilités
+4.4.1 Maîtrise d'ouvrage (MOA)
+Entité : Le fondateur / recruteur (toi-même).
+Rôles :
+Définir les questions et textes introductifs.
+Créer le formulaire sur Formspree.
+Tester l'application avec des candidats réels.
+Valider la livraison finale.
+4.4.2 Maîtrise d'œuvre (MOE)
+Entité : Développeur (toi-même).
+Rôles :
+Concevoir et développer l'application.
+Configurer l'intégration avec Formspree.
+Déployer l'application.
+Livrer la documentation.
+5. ANNEXES
+Annexe A : Structure du fichier de configuration (JSON)
+{
+  "brandName": "Satis-Tuteur",
+  "formspreeId": "xeqazvdl",
+  "introScreens": [
+    {
+      "title": "Introduction",
+      "text": "Chez Satis-Tuteur, on ne recrute pas des compétences techniques.\n\nOn recrute des façons de penser.",
+      "buttonText": "Suivant"
+    },
+    {
+      "title": "Introduction",
+      "text": "Tu vas répondre à 6 questions.\n\nPrends ton temps.\nSois authentique.\nEt surtout... amuse-toi !",
+      "buttonText": "C'est parti"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "Qu'est-ce qui fait qu'un produit est 'indispensable' pour un utilisateur ?"
+    },
+    {
+      "id": 2,
+      "text": "Si vous aviez 10 000€ pour acquérir 100 nouveaux clients, quelle serait votre stratégie ?"
+    },
+    {
+      "id": 3,
+      "text": "Un concurrent lance une fonctionnalité similaire à la nôtre. Quelle est votre première réaction ?"
+    },
+    {
+      "id": 4,
+      "text": "Comment mesurez-vous le succès d'un produit en phase de lancement ?"
+    },
+    {
+      "id": 5,
+      "text": "Un client insatisfait menace de partir. Que lui dites-vous ?"
+    },
+    {
+      "id": 6,
+      "text": "Décrivez en quelques phrases votre vision du 'travail bien fait' dans une équipe produit."
+    }
+  ],
+  "thankYou": {
+    "emoji": "🚀",
+    "message": "Merci {name} ! Vos réponses ont bien été reçues.",
+    "footer": "À très vite chez Satis-Tuteur."
+  }
+}
+Annexe B : Intégration avec Formspree
+Configuration :
+Créez un compte sur Formspree
+Créez un nouveau formulaire et récupérez l'ID (ex: xeqazvdl)
+Ajoutez l'ID dans le fichier de configuration
+Envoi des données (JavaScript) :
+// Envoi vers Formspree
+async function sendToFormspree(data) {
+    const formspreeId = config.formspreeId;
+    const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    
+    if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi');
+    }
+    return response.json();
+}
+// Utilisation
+const data = {
+    name: candidateName,
+    email: candidateEmail,
+    answers: JSON.stringify(answers), // Les réponses formatées
+    // Formspree envoie tout à l'email configuré
+};
+await sendToFormspree(data);
+Format des données reçues par email :
+json
+{  "name": "Jean Dupont",  "email": "jean.dupont@email.com",  "answers": "Q1: ...\nQ2: ...\nQ3: ...\nQ4: ...\nQ5: ...\nQ6: ...",  "_subject": "📬 Nouvelle soumission Satis-Tuteur - Jean Dupont"}
+Annexe C : Exemple d'email reçu
+Objet : 📬 Nouvelle soumission Satis-Tuteur - Jean Dupont
+Nom : Jean Dupont
+Email : jean.dupont@email.com
+Date : 02/07/2026 14:32
+--- Réponses ---
+Q1 - Qu'est-ce qui fait qu'un produit est 'indispensable' pour un utilisateur ?
+R1 : Un produit devient indispensable quand il résout un vrai problème...
+Q2 - Si vous aviez 10 000€ pour acquérir 100 nouveaux clients, quelle serait votre stratégie ?
+R2 : Je ciblerais d'abord 20% de clients à forte valeur ajoutée...
+Q3 - Un concurrent lance une fonctionnalité similaire à la nôtre. Quelle est votre première réaction ?
+R3 : Je regarderais ce qu'ils ont copié, mais surtout ce qu'ils ont mal compris...
+Q4 - Comment mesurez-vous le succès d'un produit en phase de lancement ?
+R4 : NPS, rétention à J+30, et bouche-à-oreille spontané...
+Q5 - Un client insatisfait menace de partir. Que lui dites-vous ?
+R5 : "Je comprends votre frustration. Dites-moi ce qu'il faudrait pour que vous restiez..."
+Q6 - Décrivez en quelques phrases votre vision du 'travail bien fait' dans une équipe produit.
+R6 : Le travail bien fait, c'est quand chaque membre comprend le pourquoi...
+---
+Cet email a été envoyé automatiquement depuis l'outil de recrutement Satis-Tuteur.
+Annexe D : Structure du code (arborescence)
+satis-tuteur/
+├── index.html              # Page principale
+├── css/
+│   └── style.css           # Styles + Animations
+├── js/
+│   ├── app.js              # Logique principale
+│   └── config.js           # Configuration (brand, questions, Formspree ID)
+├── data/
+│   └── questions.json      # Questions + textes introductifs
+└── README.md
+Annexe E : Avantages de Formspree vs autres solutions
+Aspect
+Formspree
+EmailJS
+SMTP direct
+Sécurité
+✅ Excellente (pas de clés exposées)
+⚠️ Moyenne (clé publique exposée)
+❌ Très mauvaise (identifiants exposés)
+Simplicité
+✅ Très simple
+⚠️ Configuration nécessaire
+❌ Complexe
+Coût
+✅ Gratuit (50/mois)
+✅ Gratuit (200/mois)
+❌ Payant (serveur)
+Maintenance
+✅ Aucune
+⚠️ Légère
+❌ Lourde
+Fiabilité
+✅ Très bonne
+✅ Bonne
+⚠️ Dépend du serveur
+📌 PROCHAINES ÉTAPES
+Validation du cahier des charges.
+Création du compte Formspree et récupération de l'ID.
+Développement (3h) - je peux te fournir le code complet.
+Déploiement et première session test.
+Voilà le cahier des charges "Satis-Tuteur" version finale avec Formspree pour l'envoi d'email sécurisé !
