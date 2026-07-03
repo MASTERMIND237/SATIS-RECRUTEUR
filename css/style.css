@@ -32,15 +32,11 @@ body {
 }
 
 .brand-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     top: 2rem;
     left: 2rem;
-    font-weight: 700;
-    font-size: 1.25rem;
+    font-weight: 900;
+    font-size: 1.5rem;
     letter-spacing: 1px;
     opacity: 0.8;
     z-index: 10;
